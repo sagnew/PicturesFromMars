@@ -8,6 +8,7 @@
 
 import UIKit
 import Alamofire
+import AlamofireImage
 import SwiftyJSON
 
 class ViewController: UIViewController {
@@ -21,7 +22,12 @@ class ViewController: UIViewController {
               if let result = response.result.value {
                     let json = JSON(result)
                     if let imageUrl = json["photos"][0]["img_src"].string {
-                        self.loadImage(imageUrl.stringByReplacingOccurrencesOfString("http", withString: "https"))
+                        // Replace "http" with "https" in the image URL.
+                        let httpsUrl = imageUrl.stringByReplacingOccurrencesOfString("http", withString: "https")
+                        let URL = NSURL(string: httpsUrl)!
+                        
+                        // Set the ImageView with an image from a URL
+                        self.marsPhotoImageView.af_setImageWithURL(URL)
                     }
                 }
         }
@@ -32,29 +38,12 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    func loadImage(urlString:String) {
-        let imgURL: NSURL = NSURL(string: urlString)!
-        let request: NSURLRequest = NSURLRequest(URL: imgURL)
-        NSURLConnection.sendAsynchronousRequest(
-            request, queue: NSOperationQueue.mainQueue(),
-            completionHandler: {(response: NSURLResponse?, data: NSData?, error: NSError?) -> Void in
-                if error == nil {
-                    self.marsPhotoImageView.image = UIImage(data: data!)
-                }
-        })
-        
-    }
-    
     func getYesterdayDateString() -> String {
         let calendar = NSCalendar.currentCalendar()
         let yesterday = calendar.dateByAddingUnit(.Day, value: -1, toDate: NSDate(), options: [])
         let components = calendar.components([.Day , .Month , .Year], fromDate: yesterday!)
         
-        let year =  components.year
-        let month = components.month
-        let day = components.day
-        
-        return "\(year)-\(month)-\(day)"
+        return "\(components.year)-\(components.month)-\(components.day)"
     }
 
 
