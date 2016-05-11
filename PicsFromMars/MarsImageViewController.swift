@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  MarsImageViewController.swift
 //  PicsFromMars
 //
 //  Created by Sam Agnew on 5/11/16.
@@ -11,12 +11,12 @@ import Alamofire
 import AlamofireImage
 import SwiftyJSON
 
-class ViewController: UIViewController {
+class MarsImageViewController: UIViewController {
     @IBOutlet var marsPhotoImageView: UIImageView!
-
+    var dateString: String = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        let dateString = getYesterdayDateString()
         Alamofire.request(.GET, "https://api.nasa.gov/mars-photos/api/v1/rovers/curiosity/photos", parameters: ["api_key": "DEMO_KEY", "earth_date": dateString])
             .responseJSON { response in
                 if let result = response.result.value {
@@ -36,7 +36,7 @@ class ViewController: UIViewController {
     
     func getYesterdayDateString() -> String {
         let calendar = NSCalendar.currentCalendar()
-        let yesterday = calendar.dateByAddingUnit(.Day, value: -1, toDate: NSDate(), options: [])
+        let yesterday = calendar.dateByAddingUnit(.Day, value: -2, toDate: NSDate(), options: [])
         let components = calendar.components([.Day , .Month , .Year], fromDate: yesterday!)
         
         return "\(components.year)-\(components.month)-\(components.day)"

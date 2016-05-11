@@ -20,6 +20,12 @@ class DateEntryViewController: UIViewController {
         super.viewDidLoad()
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+
+        let destinationVC = segue.destinationViewController as! MarsImageViewController
+        destinationVC.dateString = self.dateField.text!
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
