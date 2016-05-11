@@ -1,8 +1,8 @@
 //
 //  AppDelegate.swift
-//  HowManyPeopleAreInSpaceRightNow
+//  PicsFromMars
 //
-//  Created by Sam Agnew on 5/2/16.
+//  Created by Sam Agnew on 5/11/16.
 //  Copyright © 2016 Sam Agnew. All rights reserved.
 //
 
