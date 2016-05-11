@@ -1,15 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15B42" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gJi-59-WPY">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Mars Image View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="PicsFromMars" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="MarsImageViewController" customModule="PicsFromMars" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -18,16 +18,25 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YPP-1g-Peh">
+                                <rect key="frame" x="20" y="16" width="34" height="30"/>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <segue destination="bAQ-3h-nJC" kind="unwind" unwindAction="backToDateEntryViewController:" id="Ulx-Xt-0yw"/>
+                                </connections>
+                            </button>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="29F-sl-ikH">
-                                <rect key="frame" x="20" y="20" width="560" height="580"/>
+                                <rect key="frame" x="20" y="44" width="560" height="556"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="29F-sl-ikH" secondAttribute="bottom" id="Dda-rm-UEw"/>
-                            <constraint firstItem="29F-sl-ikH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="fwo-aO-Ngf"/>
-                            <constraint firstItem="29F-sl-ikH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" id="kfd-W7-kFD"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="29F-sl-ikH" secondAttribute="trailing" id="zlQ-gs-drF"/>
+                            <constraint firstItem="YPP-1g-Peh" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="72n-7O-FZM"/>
+                            <constraint firstItem="YPP-1g-Peh" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="topMargin" constant="16" id="8xc-kT-46d"/>
+                            <constraint firstItem="29F-sl-ikH" firstAttribute="trailing" secondItem="8bC-Xf-vdC" secondAttribute="trailingMargin" id="IOf-ba-lhH"/>
+                            <constraint firstItem="29F-sl-ikH" firstAttribute="top" secondItem="y3c-jy-aDJ" secondAttribute="bottom" constant="24" id="PhC-l1-ybz"/>
+                            <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="29F-sl-ikH" secondAttribute="bottom" id="Zzq-jD-LCE"/>
+                            <constraint firstItem="29F-sl-ikH" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leadingMargin" id="f27-mh-WiJ"/>
                         </constraints>
                     </view>
                     <connections>
@@ -35,7 +44,51 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <exit id="bAQ-3h-nJC" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
+            <point key="canvasLocation" x="1354" y="207"/>
+        </scene>
+        <!--Date Entry View Controller-->
+        <scene sceneID="W4J-4z-Cse">
+            <objects>
+                <viewController id="gJi-59-WPY" customClass="DateEntryViewController" customModule="PicsFromMars" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="zQX-ub-GWs"/>
+                        <viewControllerLayoutGuide type="bottom" id="TNq-7U-21J"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="T9e-Oe-DlC">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Ex: 2016-1-1" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="CfE-gC-EzB">
+                                <rect key="frame" x="28" y="28" width="102" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="45f-J3-aeV">
+                                <rect key="frame" x="154" y="28" width="79" height="30"/>
+                                <state key="normal" title="View Image"/>
+                                <connections>
+                                    <segue destination="BYZ-38-t0r" kind="presentation" id="aYl-7K-OjJ"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="CfE-gC-EzB" firstAttribute="top" secondItem="zQX-ub-GWs" secondAttribute="bottom" constant="8" id="1xb-1b-yNa"/>
+                            <constraint firstItem="45f-J3-aeV" firstAttribute="top" secondItem="zQX-ub-GWs" secondAttribute="bottom" constant="8" id="JSO-TE-AqV"/>
+                            <constraint firstItem="CfE-gC-EzB" firstAttribute="leading" secondItem="T9e-Oe-DlC" secondAttribute="leadingMargin" constant="8" id="WFA-XU-b2j"/>
+                            <constraint firstItem="45f-J3-aeV" firstAttribute="top" secondItem="zQX-ub-GWs" secondAttribute="bottom" constant="8" id="fPI-Di-Wcl"/>
+                            <constraint firstItem="45f-J3-aeV" firstAttribute="leading" secondItem="CfE-gC-EzB" secondAttribute="trailing" constant="24" id="sli-gh-FtE"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="dateField" destination="CfE-gC-EzB" id="XD8-d5-8w3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="jl4-0o-P6V" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="610" y="207"/>
         </scene>
     </scenes>
 </document>
